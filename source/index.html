@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Стартовый шаблон</title>
+  <link rel="stylesheet" href="css/style.min.css">
+</head>
+
+<body>
+  <section class="assortment">
+    <h1 class=visually-hidden>Ассортимент</h1>
+    <ul class="assortment__chairs chairs">
+      <li class="chairs__item">
+        <img class="chairs__img" src="/img/img-1.png" width="125" height="166"
+          alt="Парикмахерское кресло «Норм» гидравлическое">
+        <h2 class="chairs__title">Парикмахерское кресло «Норм» гидравлическое</h2>
+        <p class="chairs__price">9 900 &#8381;</p>
+        <button class="chairs__button" type="button">Купить</button>
+      </li>
+      <li class="chairs__item">
+        <img class="chairs__img" src="/img/img-1.png" width="125" height="166"
+          alt="Парикмахерское кресло «Норм» гидравлическое">
+        <h2 class="chairs__title">Парикмахерское кресло «Норм» гидравлическое</h2>
+        <p class="chairs__price">9 900 &#8381;</p>
+        <button class="chairs__button" type="button">Купить</button>
+      </li>
+      <li class="chairs__item">
+        <img class="chairs__img" src="/img/img-1.png" width="125" height="166"
+          alt="Парикмахерское кресло «Норм» гидравлическое">
+        <h2 class="chairs__title">Парикмахерское кресло «Норм» гидравлическое</h2>
+        <p class="chairs__price">9 900 &#8381;</p>
+        <button class="chairs__button" type="button">Купить</button>
+      </li>
+      <li class="chairs__item">
+        <img class="chairs__img" src="/img/img-1.png" width="125" height="166"
+          alt="Парикмахерское кресло «Норм» гидравлическое">
+        <h2 class="chairs__title">Парикмахерское кресло «Норм» гидравлическое</h2>
+        <p class="chairs__price">9 900 &#8381;</p>
+        <button class="chairs__button" type="button">Купить</button>
+      </li>
+    </ul>
+</section>
+<section class="modal">
+  <h2 class=visually-hidden>Модальное окно</h2>
+  <form class="modal__form form" action="https://echo.htmlacademy.ru" method="POST">
+    <button class="form__close" type="button" aria-label="Закрыть модальное окно"></button>
+    <input class="form__input" type="text" name="name" id="name" placeholder="Имя" required>
+    <label class="visually-hidden" for="name">Заказчик</label>
+    <input class="form__input" type="tel" name="phone" id="phone" placeholder="Телефон" required>
+    <label class="visually-hidden" for="phone">Телефон</label>
+    <input class="form__input" type="email" name="email" id="email" placeholder="E-mail" required>
+    <label class="visually-hidden" for="email">Почта</label>
+    <textarea class="form__textarea" type="text" name="item" id="item" value="" required>Парикмахерское кресло «Норм» гидравлическое</textarea>
+    <button class="form__submit" type="submit">Отправить</button>
+  </form>
+</section>
+  <script src="js/script.js"></script>
+</body>
+
+</html>

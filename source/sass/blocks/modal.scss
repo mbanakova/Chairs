@@ -1,0 +1,20 @@
+.modal {
+  display: none;
+
+  &--active {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 999;
+    background-color: rgba($black, 0.2);
+  }
+}
+
+.modal__form {
+  margin: auto;
+}

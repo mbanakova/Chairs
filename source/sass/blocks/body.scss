@@ -1,0 +1,16 @@
+body {
+  @include font();
+  @include fields();
+  position: relative;
+  margin: 0 auto;
+  color: $black;
+  font-family: $font;
+  overflow-x: hidden;
+}
+
+body,
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}

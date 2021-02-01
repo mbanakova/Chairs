@@ -1,0 +1,79 @@
+.chairs {
+  @include ul();
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  grid-gap: 20px;
+
+  @media (max-width: $desktop) {
+    max-width: 60%;
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  @media (max-width: $tablet) {
+    grid-template-columns: 1fr;
+    max-width: 80%;
+  }
+}
+
+.chairs__item {
+  padding: 20px;
+  margin: 0 auto;
+  text-align: center;
+  min-height: 325px;
+  display: grid;
+  grid-template-areas:
+    "img"
+    "title"
+    "price"
+    "button";
+  grid-row-gap: 10px;
+
+  &:hover {
+    box-shadow: 0 0 20px 10px $shadow;
+    transition: $tr;
+  }
+}
+
+.chairs__img {
+  margin: 0 auto;
+  grid-area: img;
+  width: 125px;
+  height: 166px;
+}
+
+.chairs__title {
+  @include fields();
+  @include font(14px, 16px, 400);
+  grid-area: title;
+
+  @media (max-width: $tablet) {
+    max-width: 280px;
+  }
+}
+
+.chairs__price {
+  @include fields();
+  @include font(20px, 26px, 700);
+  grid-area: price;
+}
+
+.chairs__button {
+  @include button();
+  @include font(12px, 12px, 400);
+  grid-area: button;
+  padding: 10px 40px;
+  margin: 0 auto;
+  color: $white;
+  border-radius: 16px;
+
+  &:hover {
+    background-color: $accent-hover;
+    transition: $tr;
+  }
+
+  &:active {
+    background-color: $accent-active;
+    transition: $tr;
+  }
+}

@@ -1,0 +1,8 @@
+$black: #000000;
+$white: #ffffff;
+
+$shadow: lighten($black, 90%);
+
+$accent: rgb(243, 4, 96);
+$accent-hover: darken($accent, 10%);
+$accent-active: lighten($accent, 10%);
