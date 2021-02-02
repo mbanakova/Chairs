@@ -18,7 +18,7 @@
 
 .chairs__item {
   padding: 20px;
-  margin: 0 auto;
+  margin: 0;
   text-align: center;
   min-height: 325px;
   display: grid;
@@ -45,6 +45,7 @@
 .chairs__title {
   @include fields();
   @include font(14px, 16px, 400);
+  margin: 0 auto;
   grid-area: title;
 
   @media (max-width: $tablet) {

@@ -1,12 +1,9 @@
 'use strict';
 
 (function () {
-  // var body = document.querySelector('body');
-  var buttons = document.querySelectorAll('.chairs__button');
   var modal = document.querySelector('.modal');
   var form = document.querySelector('.form');
   var inputs = document.querySelectorAll('.form__input');
-  // var textarea = document.querySelector('.form__textarea');
   var close = document.querySelector('.form__close');
   var isStorageSupport = true;
   var userName = document.querySelector('#name');
@@ -16,13 +13,48 @@
   var storagePhone = '';
   var storageEmail = '';
 
-  if (buttons) {
-    buttons.forEach(function (button) {
-      button.addEventListener('click', function () {
+  // Данные из JSON:
+  function readTextFile(file, callback) {
+    var xhttp = new XMLHttpRequest();
+    xhttp.overrideMimeType('application/json');
+    xhttp.open('GET', file, true);
+    xhttp.onreadystatechange = function () {
+      if (this.readyState === 4 && this.status === 200) {
+        callback(this.responseText);
+      }
+    };
+    xhttp.send();
+  }
+
+  // использование:
+  var url = 'http://localhost:3000/js/data.json';
+  var data = {};
+
+  readTextFile(url, function (text) {
+    data = JSON.parse(text);
+    var ul = document.createElement('ul');
+    document.querySelector('.assortment').appendChild(ul);
+    ul.classList.add('assortment__chairs');
+    ul.classList.add('chairs');
+
+    // создаёт карточки на каждый элемент из json и пушит в список:
+    data.product.forEach(function (item) {
+      var fragment = document.createElement('li');
+      fragment.classList.add('chairs__item');
+      fragment.innerHTML = '\n      <img class=\'chairs__img\' src='.concat(item.img, ' alt=').concat(item.name, ' width=\'125\' height=\'166\'>\n      <h2 class="chairs__title">').concat(item.name, '</h2>\n      <p class="chairs__price">').concat(item.price, ' &#8381;</p>\n      <button class="chairs__button" type="button">\u041A\u0443\u043F\u0438\u0442\u044C</button>\n      ');
+      ul.appendChild(fragment);
+    });
+
+    // При клике по кнопке 'Купить' появляется модальное окно и заполняется название товара в textarea
+    var cards = document.querySelectorAll('.chairs__item');
+    cards.forEach(function (card) {
+      var redButton = card.querySelector('.chairs__button');
+      redButton.addEventListener('click', function () {
         modal.classList.add('modal--active');
+        modal.querySelector('#item').textContent = card.querySelector('.chairs__title').textContent;
       });
     });
-  }
+  });
 
   var closeModal = function () {
     modal.classList.remove('modal--active');
@@ -31,13 +63,8 @@
   close.onclick = closeModal;
   close.ontouch = closeModal;
 
-  form.onsubmit = function (event) {
-    event.preventDefault();
-    closeModal();
-  };
-
   window.addEventListener('keydown', function (event) {
-    if (event.keyCode === 27) {
+    if (event.key === 'Escape') {
       event.preventDefault();
       closeModal();
     }
@@ -60,7 +87,7 @@
 
   // Если есть, заполняем поля формы:
   if (storageName && storagePhone && storageEmail) {
-    if (userName || userPhone || storageEmail) {
+    if (userName || userPhone || userEmail) {
       userName.value = storageName;
       userPhone.value = storagePhone;
       userEmail.value = storageEmail;
@@ -82,6 +109,10 @@
           localStorage.setItem('email', userEmail.value);
         }
       });
+      if (userName && userPhone && storageEmail) {
+        event.preventDefault();
+        closeModal();
+      }
     });
   }
 
